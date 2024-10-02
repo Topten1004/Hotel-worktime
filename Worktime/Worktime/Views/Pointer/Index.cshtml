@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Worktime.Models.Pointer>
+
+@{
+    ViewData["Title"] = "Pointer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h4>POINTEUSES</h4>
+<p>
+    <a asp-action="Create">Nouveau</a>
+</p>
+
+<div class="card-body">
+    <div class="table-responsive">
+        <table class="table text-nowrap">
+            <thead class="table-primary">
+                <tr>
+                    <th>
+                        ID
+                    </th>
+                    <th>
+                        NAME
+                    </th>
+                    <th>
+                        CODE
+                    </th>
+                    <th>
+
+                    </th>
+                </tr>
+            </thead>
+            <tbody style="background:#ced4da">
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Code)
+                        </td>
+
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.Id">Modifier</a> |
+                            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.Id">Supprimer</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
